@@ -1,1 +1,5 @@
-<h1>hallo masyarakat</h1>
+@extends('template.dashboard')
+
+@section('content')
+<h1>Hallo masyarakat</h1>
+@endsection

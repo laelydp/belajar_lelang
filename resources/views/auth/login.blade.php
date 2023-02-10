@@ -78,7 +78,7 @@
                   </div>
                   <p class="mt-4 text-sm text-center">
                     Don't have an account?
-                    <a href="../pages/sign-up.html" class="text-primary text-gradient font-weight-bold">register</a>
+                    <a href="{{ route('register.store') }}" class="text-primary text-gradient font-weight-bold">register</a>
                   </p>
                 </form>
               </div>

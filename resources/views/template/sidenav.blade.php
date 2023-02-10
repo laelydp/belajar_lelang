@@ -17,39 +17,13 @@
             </div>
             <span class="nav-link-text ms-1">Data Barang</span>
           </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{ route('barang.create') }}" class="nav-link text-white">
-                  <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="nav-icon fas fa-thin fa-box"></i>
-                  </div>
-                  <span class="nav-link-text ms-1">Tambah Data Barang</span>
-                  </a>
-                  </li>
-            </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/tables.html">
+          <a class="nav-link" href="#">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">table_view</i>
+              <i class="material-icons opacity-10">dashboard</i>
             </div>
-            <span class="nav-link-text ms-1">Tables</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/billing.html">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">receipt_long</i>
-            </div>
-            <span class="nav-link-text ms-1">Create Profile</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/notifications.html">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">notifications</i>
-            </div>
-            <span class="nav-link-text ms-1">Notifications</span>
+            <span class="nav-link-text ms-1">Data Lelang</span>
           </a>
         </li>
         <li class="nav-item mt-3">
@@ -64,19 +38,11 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/sign-in.html">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">login</i>
-            </div>
-            <span class="nav-link-text ms-1">Sign In</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/sign-up.html">
+          <a class="nav-link text-white " href="{{ route('logout-petugas')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
-            <span class="nav-link-text ms-1">Sign Up</span>
+            <span class="nav-link-text ms-1">Log Out</span>
           </a>
         </li>
       </ul>

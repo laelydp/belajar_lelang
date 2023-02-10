@@ -53,6 +53,12 @@
     </tbody>
     </table>    
   </div>
+              <div class="card-header">
+              <a class="btn btn-primary" href="{{ route('barang.create')}}">
+                  <i class="fas fa-plus"></i>
+                  Tambah Barang
+             </a>
+              </div>
 </div>
 </div>
 </body>
