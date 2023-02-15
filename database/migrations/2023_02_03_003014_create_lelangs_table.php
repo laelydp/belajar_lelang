@@ -15,7 +15,7 @@ class CreateLelangsTable extends Migration
     {
         Schema::create('lelangs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tabel_barangs_id')->constrained('tabel_barangs');
+            $table->foreignId('barangs_id')->constrained('barangs');
             $table->foreignId('users_id')->constrained('users');
             $table->date('tanggal_lelang');
             $table->integer('harga_akhir');

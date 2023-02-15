@@ -1,14 +1,7 @@
-@extends('template.dashboard')
+@extends('template.home')
+@section('title', 'Lelang Online ')
 @section('content')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Barang</title>
-</head>
-<body>
+
 <div class="card">
   <div class="col-md-12">
     <div class="card-header">
@@ -35,23 +28,22 @@
             <td>{{ $barang->harga_awal}}</td>
             <td>{{ $barang->deskripsi_barang}}</td>
               <td>
-                <form action ="#" method="POST">
-                
-                <a class="btn btn-sm btn-info mr-3" href="{{ route('barang.show', $barang->id) }}">Detail</a>
-                <a class="btn  btn-sm btn-warning mr-3" href="#">Edit</a>
+                <form action ="{{ route('barang.destroy', [$barang->id]) }}" method="POST">
+                    <a class="btn btn-sm btn-info mr-3" href="{{ route('barang.show', $barang->id) }}">Detail</a>
+                    <a class="btn  btn-sm btn-warning mr-3" href="{{ route('barang.edit', $barang->id) }}">Edit</a>
                 @csrf
-                @method('DELETE')
+                @method ('DELETE')
                 <input type="submit" class="btn btn-sm btn-danger mr-3" value="Delete">
                 </form>
-              </td>    
+              </td>
               </tr>
-        @empty       
+        @empty
         <tr>
             <td>Data Masih Kosong</td>
         </tr>
       @endforelse
     </tbody>
-    </table>    
+    </table>
   </div>
               <div class="card-header">
               <a class="btn btn-primary" href="{{ route('barang.create')}}">
@@ -61,6 +53,4 @@
               </div>
 </div>
 </div>
-</body>
-</html>
 @endsection

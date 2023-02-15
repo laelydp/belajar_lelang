@@ -18,9 +18,9 @@ class Lelang extends Model
 
     ];
 
-public function tabelbarang()
+public function Barang()
 {
-    return $this->hasOne('App\Models\TabelBarang',
+    return $this->hasOne('App\Models\Barang',
     'id', 'barangs_id');
 }
 
