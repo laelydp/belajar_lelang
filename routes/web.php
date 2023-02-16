@@ -21,8 +21,10 @@ use App\Http\Controllers\RegisterController;
 Route::get('/', function () {
     return view('welcome');
 });
-
+//untuk barang
+Route::middleware(['auth', 'level:petugas,admin'])->group (function () {
 Route::resource('/barang', BarangController::class);
+});
 
 //untuk login
 Route::get('login',
@@ -39,13 +41,13 @@ Route::get('registrasi',[RegisterController::class, 'register'])->name('register
 Route::post('registrasi',[RegisterController::class, 'store'])->name('register.store');
 
 //route untuk dashboard
-Route::get('dashboard',[DashboardController::class, 'dashboard'])->name('dashboard')->middleware('auth', 'level:admin, petugas');
-Route::get('dashboard/admin',[DashboardController::class, 'admin'])->name('dashboard.admin')->middleware('auth', 'level:admin, petugas');
-Route::get('dashboard/petugas',[DashboardController::class, 'petugas'])->name('dashboard.petugas')->middleware('auth','level:petugas' );
+// Route::get('dashboard',[DashboardController::class, 'dashboard'])->name('dashboard')->middleware('auth', 'level:admin, petugas');
+Route::get('dashboard/admin',[DashboardController::class, 'admin'])->name('dashboard.admin')->middleware('auth', 'level:admin');
+Route::get('dashboard/petugas',[DashboardController::class, 'petugas'])->name('dashboard.petugas')->middleware('auth','level:petugas,admin' );
 // Route::get('dashboard/masyarakat',[DashboardController::class, 'masyarakat'])->name('dashboard.masyarakat')->middleware('auth', 'level:masyarakat');
 
 //route untuk lelang
-Route::middleware(['auth', 'level:petugas'])->group (function () {
+Route::middleware(['auth', 'level:petugas,admin'])->group (function () {
 Route::resource('/lelang', LelangController::class);
 });
 

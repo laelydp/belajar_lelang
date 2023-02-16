@@ -50,7 +50,7 @@
                     <div class="input-group input-group-outline mb-3">
                       <label class="form-label">Nama Lengkap</label>
                       <input type="text" id="name" name="name" value="{{ old ('name') }}" required autocomplete="name" autofocus class="form-control form-control-xl @error('name') is-invalid @enderror" >
-                    </div>  
+                    </div>
                           @error ('name')
                             <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
@@ -59,7 +59,7 @@
                     <div class="input-group input-group-outline mb-3">
                       <label class="form-label">Username</label>
                       <input type="text" id="username" name="username" value="{{ old ('username')}}" required autocomplete="name" autofocus class="form-control form-control-xl @error('name') is-invalid @enderror">
-                    </div>  
+                    </div>
                           @error ('username')
                             <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
@@ -75,15 +75,24 @@
                             </span>
                           @enderror
                     <div class="input-group input-group-outline mb-3">
+                        <label class="form-label">Ketik ulang password</label>
+                        <input type="password" id="passwordshow" name="passwordshow" class="form-control form-control-xl @error('passwordshow') is-invalid @enderror" required autocomplete="new-password" >
+                    </div>
+                        @error('passwordshow')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    <div class="input-group input-group-outline mb-3">
                       <label class="form-label">Telepon</label>
                       <input type="text" id="telepon" name="telepon" value="{{ old('telepon') }}" required autocomplete="name" autofocus class="form-control form-control-xl @error('name') is-invalid @enderror">
-                    </div>  
+                    </div>
                           @error('telepon')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                           @enderror
-             
+
                     <div class="form-check form-check-info text-start ps-0">
                       <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
                       <label class="form-check-label" for="flexCheckDefault">

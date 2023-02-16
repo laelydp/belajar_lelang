@@ -10,23 +10,58 @@
     <hr class="horizontal light mt-0 mb-2">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
+        @if (auth()->user()->level == 'admin')
+        <li class="nav-item">
+          <a href="{{ route('dashboard.admin') }}" class="nav-link">
+          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="material-icons opacity-10">dashboard</i>
+          </div>
+          <span class="nav-link-text ms-1">Dashboard</span>
+          </a>
+        </li>
+        @endif
+        @if (auth()->user()->level == 'admin')
         <li class="nav-item">
           <a class="nav-link" href="{{ route('barang.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">dashboard</i>
+              <i class="material-icons opacity-10">create_new_folder</i>
             </div>
             <span class="nav-link-text ms-1">Data Barang</span>
           </a>
         </li>
-        @if (auth()->user()->level == 'petugas')
         <li class="nav-item">
-          <a class="nav-link" href="{{route ('lelang.index')}}">
+            <a class="nav-link" href="{{route ('lelang.index')}}">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">folder</i>
+              </div>
+              <span class="nav-link-text ms-1">Data Lelang</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">dashboard</i>
+                <i class="material-icons opacity-10">person_add</i>
             </div>
-            <span class="nav-link-text ms-1">Data Lelang</span>
-          </a>
+            <span class="nav-link-text ms-1">Data Users</span>
+            </a>
         </li>
+        @elseif (auth()->user()->level == 'petugas')
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('barang.index') }}">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">create_new_folder</i>
+              </div>
+              <span class="nav-link-text ms-1">Data Barang</span>
+            </a>
+          </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route ('lelang.index')}}">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">folder</i>
+              </div>
+              <span class="nav-link-text ms-1">Data Lelang</span>
+            </a>
+          </li>
         @endif
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>

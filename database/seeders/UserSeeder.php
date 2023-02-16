@@ -20,14 +20,16 @@ class UserSeeder extends Seeder
                 'username' => 'admin',
                 'level' => 'admin',
                 'password' => bcrypt('admin'),
+                'passwordshow' => ('admin'),
                 'telepon' => '0812'
-                
+
             ],
             [
                 'name' => 'petugas',
                 'username' => 'petugas',
                 'level' => 'petugas',
                 'password' => bcrypt('petugas'),
+                'passwordshow' => ('petugas'),
                 'telepon' => '0896'
             ],
             [
@@ -35,9 +37,10 @@ class UserSeeder extends Seeder
                 'username' => 'masyarakat',
                 'level' => 'masyarakat',
                 'password' => bcrypt('masyarakat'),
+                'passwordshow' => ('masyarakat'),
                 'telepon' => '0856'
             ],
-            
+
         ];
         foreach($users as $key => $value){
             user::create($value);

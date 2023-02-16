@@ -29,11 +29,17 @@
             <td>{{ $barang->deskripsi_barang}}</td>
               <td>
                 <form action ="{{ route('barang.destroy', [$barang->id]) }}" method="POST">
-                    <a class="btn btn-sm btn-info mr-3" href="{{ route('barang.show', $barang->id) }}">Detail</a>
-                    <a class="btn  btn-sm btn-warning mr-3" href="{{ route('barang.edit', $barang->id) }}">Edit</a>
+                    <a class="btn btn-sm btn-info mr-3" href="{{ route('barang.show', $barang->id) }}">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                    <a class="btn  btn-sm btn-warning mr-3" href="{{ route('barang.edit', $barang->id) }}">
+                    <i class="fas fa-edit"></i>
+                    </a>
                 @csrf
                 @method ('DELETE')
-                <input type="submit" class="btn btn-sm btn-danger mr-3" value="Delete">
+                <button type="submit" class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
+                    <i class="fas fa-trash"></i>
+                </button>
                 </form>
               </td>
               </tr>

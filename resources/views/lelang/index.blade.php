@@ -4,10 +4,11 @@
 @section('content')
 <section class="section">
   <div class="card">
+    @if (auth()->user()->level == 'petugas')
       <div class="card-header d-flex justify-content-between">
         <a href="{{ route('lelang.create') }}" class="btn btn-primary btn-md">{{ __('Tambah Lelang') }}</a>
       </div>
-
+    @endif
       <div class="card-body">
           <table id="data-table" class="table table-bordered table-hover">
               <thead>
@@ -18,7 +19,9 @@
                       <th>Harga Lelang</th>
                       <th>Tanggal Lelang</th>
                       <th>Status</th>
+                    @if (auth()->user()->level == 'petugas')
                       <th>Action</th>
+                    @endif
                   </tr>
               </thead>
         <tbody>
@@ -33,6 +36,7 @@
                         <span class="badge {{ $lelang->status == 'ditutup' ? 'bg-danger': 'bg-success' }}">{{ Str::title($lelang->status)  }}</span>
                     </td>
                     <td>
+                        @if (auth()->user()->level == 'petugas')
                         <div class="d-flex flex-nowrap flex-column flex-md-row justify-center">
                             <form action="#" method="POST">
                                 <a href="#" class="btn btn-info btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail">
@@ -48,6 +52,7 @@
                         </button>
                             </form>
                      </div>
+                     @endif
                 </td>
             </tr>
             @empty
