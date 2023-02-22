@@ -1,9 +1,47 @@
 @extends('template.home')
-@section('title', 'Lelang Online')
+@section('title', 'GO-LANG')
 
 @section('content')
 <section class="section">
+    <section class="content">
+        @if(session()->has('success'))
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="alert alert-success" role="alert">
+                {{session('success')}}
+                <li class="fas fa-check-circle"></li>
+              </div>
+            </div>
+          </div>
+        </div>
+        @elseif(session()->has('editsuccess'))
+        <<div class="form-group">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="alert alert-success" role="alert">
+                {{session('editsuccess')}}
+                <li class="fas fa-check-circle"></li>
+              </div>
+            </div>
+          </div>
+        </div>
+        @elseif(session()->has('deletesuccess'))
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="alert alert-success" role="alert">
+                {{session('deletesuccess')}}
+                <li class="fas fa-check-circle"></li>
+              </div>
+            </div>
+          </div>
+        </div>
+        @endif
   <div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Data barang yang akan dilelang</h3>
+    </div>
     @if (auth()->user()->level == 'petugas')
       <div class="card-header d-flex justify-content-between">
         <a href="{{ route('lelang.create') }}" class="btn btn-primary btn-md">{{ __('Tambah Lelang') }}</a>
@@ -22,6 +60,10 @@
                     @if (auth()->user()->level == 'petugas')
                       <th>Action</th>
                     @endif
+                    @if(auth()->user()->level == 'admin')
+                    <th></th>
+                    @else
+                    @endif
                   </tr>
               </thead>
         <tbody>
@@ -38,34 +80,31 @@
                     <td>
                         @if (auth()->user()->level == 'petugas')
                         <div class="d-flex flex-nowrap flex-column flex-md-row justify-center">
-                            <form action="#" method="POST">
-                                <a href="#" class="btn btn-info btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail">
+                            <form action="{{ route('lelang.destroy', [$lelang->id]) }}" method="POST">
+                                <a href="{{ route('lelangpetugas.show', [$lelang->id]) }}" class="btn btn-info btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail">
                                     <i class=" fas fa-eye"></i>
                                 </a>
-                                <a href="#" class="btn btn-warning btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
-                                    <i class="fas fa-edit"></i>
                                 </a>
-                            @csrf
-                            @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
-                        <i class="fas fa-trash"></i>
-                        </button>
+                                    @csrf
+                                    @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
+                                <i class="fas fa-trash"></i>
+                                </button>
                             </form>
-                     </div>
-                     @endif
+                        </div>
+                         @endif
                 </td>
             </tr>
             @empty
                   <tr>
                     <td colspan="5" style="text-align: center" class="text-danger">Data lelang Kosong</td>
                   </tr>
-
-                @endforelse
-
+            @endforelse
               </tbody>
           </table>
-        </tbody>
-
+      </div>
+    </div>
+</section>
 @endsection
 
 {{-- <!-- {{ route('lelang.create') }} --> --}}

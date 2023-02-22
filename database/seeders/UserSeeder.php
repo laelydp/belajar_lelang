@@ -16,6 +16,15 @@ class UserSeeder extends Seeder
         //
         $users =[
             [
+                'name' => 'Laely',
+                'username' => 'Laely',
+                'level' => 'masyarakat',
+                'password' => bcrypt('masyarakat'),
+                'passwordshow' => ('masyarakat'),
+                'telepon' => '0812'
+
+            ],
+            [
                 'name' => 'admin',
                 'username' => 'admin',
                 'level' => 'admin',

@@ -1,5 +1,5 @@
 @extends('template.home')
-@section('title', 'Lelang Online ')
+@section('title', 'GO-LANG ')
 
 @section('content')
 <section id="multiple-column-form">
@@ -7,20 +7,13 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">{{ __('Edit Data Barang Yang Akan Di Lelang') }}</h4>
+                    <h4 class="card-title">{{ __('Tambah Barang Yang Akan Di Lelang') }}</h4>
                 </div>
                 <div class="card-content">
                     <div class="card-body">
                         <form class="form" method="POST" action="{{ route('lelang.store') }}" data-parsley-validate>
                           @csrf
                           <div class="row">
-                                  {{-- <div class="mb-3">
-                                    <label for="nama_barang" class="form-label">{{ __('Nama Barang') }}</label>
-                                    <input type="text" id="nama_barang" class="form-control @error('nama_barang') is-invalid @enderror" placeholder="Nama Barang" name="barangs_id" data-parsley-required="true" value="{{ old('nama_barang', Str::of($barangs[0]->nama_barang)->title()) }}">
-                                  </div>
-                                  @error('nama_barang')
-                                    <div class="alert alert-danger" role="alert">{{ $message }}</div>
-                                  @enderror --}}
                                   <div class="col-12">
                                     <div class="form-group mandatory">
                                       <label for="barangs_id" class="form-label">{{ __('Nama Barang') }}</label>
@@ -67,7 +60,6 @@
                                       {{ __('Submit') }}
                                     </button>
                                 </div>
-
                               </div>
                             </div>
                         </form>

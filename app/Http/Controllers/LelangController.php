@@ -6,6 +6,7 @@ use App\Models\Lelang;
 use App\Models\Barang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class LelangController extends Controller
 {
@@ -83,7 +84,8 @@ class LelangController extends Controller
      */
     public function show(Lelang $lelang)
     {
-        //
+        $lelangs = Lelang::find($lelang->id);
+        return view('lelang.show', compact('lelangs'));
     }
 
     /**
@@ -118,5 +120,11 @@ class LelangController extends Controller
     public function destroy(Lelang $lelang)
     {
         //
+        $lelangs = Lelang::find($lelang->id);
+        $lelangs->delete();
+
+        return redirect('/lelang')->with('deletesuccess', 'Data Barang Berhasil Dihapus');
     }
+
+
 }

@@ -1,5 +1,5 @@
 @extends('template.home')
-@section('title', 'Lelang Online | Edit')
+@section('title', 'GO-LANG| Edit')
 
 @section('content')
  <div class="row">
@@ -24,6 +24,30 @@
                         <label for="harga_awal">Harga Awal</label>
                         <input type="text" class="form-control" name="harga_awal" id="harga_awal" placeholder="Input Harga Awal" value="{{ $barangs->harga_awal }}">
                     </div>
+                    <div class="col-md-12">
+                        <!-- Profile Image -->
+                        <div class="card card-primary card-outline">
+                          <div class="card-body box-profile">
+                            <div class="form-group">
+                                @if( $barangs->image )
+                                <img src="{{ asset('storage/' . $barangs->image)}}" alt="{{ $barangs->nama_barang }}" class="img-fluid mt-3" width="50%">
+                                @else
+                                <img class="img-preview img-fluid col-sm-5 mb-3" alt="">
+                                @endif
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="image" class="form-label">Gambar Barang</label>
+                        <img class="img-preview img-fluid col-sm-5 mb-3" alt="">
+                        <input class="form-control @error('image')is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
+                        @error('image')
+                        <div class="invalid-feedback">
+                          {{ $message }}
+                        </div>
+                        @enderror
+                      </div>
                     <div class="form-group">
                         <label for="deskripsi_barang">Deskripsi Barang</label>
                         <textarea class="form-control" name="deskripsi_barang" id="deskripsi_barang" >{{ $barangs->deskripsi_barang }}</textarea>

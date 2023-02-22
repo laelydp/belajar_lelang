@@ -41,20 +41,24 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
+        $validatedData= $request->validate([
             'nama_barang' => 'required',
             'tgl' => 'required',
             'harga_awal' => 'required',
+            'image' => 'image|file',
             'deskripsi_barang' => 'required'
         ]);
-        Barang::create([
-            "nama_barang" => $request->nama_barang,
-            "tgl" => $request->tgl,
-            "harga_awal" => $request->harga_awal,
-            "deskripsi_barang" => $request->deskripsi_barang
-        ]);
-
-        return redirect('/barang');
+        // Barang::create([
+        //     "nama_barang" => $request->nama_barang,
+        //     "tgl" => $request->tgl,
+        //     "harga_awal" => $request->harga_awal,
+        //     "deskripsi_barang" => $request->deskripsi_barang
+        // ]);
+        if($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('barang-images');
+        }
+        Barang::create($validatedData);
+        return redirect()->route('/barang')->with('success', 'Data Barang Berhasil Ditambahakan');
     }
 
     /**
@@ -96,20 +100,27 @@ class BarangController extends Controller
     {
 
         $request->validate([
-        'nama_barang' => 'required',
-        'tgl' => 'required',
-        'harga_awal' => 'required',
-        'deskripsi_barang' => 'required'
-    ]);
+            'nama_barang' => 'required',
+            'tgl' => 'required',
+            'harga_awal' => 'required',
+            'image' => 'image|file',
+            'deskripsi_barang' => 'required'
+        ]);
 
-    $barangs = Barang::find($Barang->id);
-    $barangs->nama_barang = $request->nama_barang;
-    $barangs->tgl = $request->tgl;
-    $barangs->harga_awal = $request->harga_awal;
-    $barangs->deskripsi_barang = $request->deskripsi_barang;
-    $barangs->update();
+        if($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('barang-images');
+        }
 
-    return redirect('/barang');
+        $barangs = Barang::find($Barang->id);
+        $barangs->nama_barang = $request->nama_barang;
+        $barangs->tgl = $request->tgl;
+        $barangs->harga_awal = $request->harga_awal;
+        $barangs->image = $request->image;
+        $barangs->deskripsi_barang = $request->deskripsi_barang;
+        $barangs->update();
+
+        return redirect()->route('/barang')->with('editsuccess', 'Data Barang Berhasil Diedit');
+
     }
 
     /**
@@ -122,6 +133,6 @@ class BarangController extends Controller
     {
         $barangs = Barang::find($Barang->id);
         $barangs->delete();
-        return redirect ('/barang');
+        return redirect()->route('barang.index')->with('deletesuccess', 'Data Barang Berhasil Dihapus');
     }
 }
