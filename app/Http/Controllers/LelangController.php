@@ -73,7 +73,7 @@ class LelangController extends Controller
         $lelang->status = 'dibuka';
         $lelang->save();
 
-        return redirect()->route('lelang.index')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('lelangpetugas.index')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -123,7 +123,7 @@ class LelangController extends Controller
         $lelangs = Lelang::find($lelang->id);
         $lelangs->delete();
 
-        return redirect('/lelang')->with('deletesuccess', 'Data Barang Berhasil Dihapus');
+        return redirect()->route('lelangpetugas.index')->with('deletesuccess', 'Data Barang Berhasil Dihapus');
     }
 
 

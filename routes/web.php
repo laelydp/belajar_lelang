@@ -7,7 +7,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LelangController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ListController;
+use App\Http\Controllers\MasyarakatController;
+use App\Http\Controllers\HistoryLelangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,7 +58,7 @@ Route::controller(LelangController::class)->group(function() {
     Route::put('/petugas/lelang/{lelang}', 'update')->name('lelang.update')->middleware('auth','level:petugas');
     Route::get('/admin/lelang/{lelang}', 'show')->name('lelangadmin.show')->middleware('auth','level:admin');
     Route::get('/admin/lelang/', 'index')->name('lelangadmin.index')->middleware('auth','level:admin');
-    Route::delete('/petugas/lelang/', 'destroy')->name('lelang.destroy')->middleware('auth','level:petugas');
+    Route::delete('/petugas/{lelang}/lelang/', 'destroy')->name('lelang.destroy')->middleware('auth','level:petugas');
 });
 
 //untuk users
@@ -73,8 +74,17 @@ Route::post('profile/update', [UserController::class, 'updateprofile'])->name('u
 Route::put('profile/update', [UserController::class, 'updateprofile'])->name('user.updateprofile')->middleware('auth','level:admin,petugas,masyarakat');
 Route::get('profile', [UserController::class, 'editprofile'])->name('user.editprofile')->middleware('auth','level:admin,petugas,masyarakat');
 
+//Route Error
 Route::view('error/403', 'error.403')->name('error.403');
 
 //Route Masyarakat
 Route::get('data-penawaran-anda', [MasyarakatController::class, 'index'])->name('masyarakatlelang.index')->middleware('auth', 'level:masyarakat');
-// Route::get('/listlelang', [ListController::class, 'index'])->name('listlelang.index');
+Route::resource('masyarakat', MasyarakatController::class)->middleware('auth',' level:admin');
+
+//Untuk History Lelang
+Route::controller(HistoryLelangController::class)->group(function() {
+    Route::get('/menawar/{lelang}', 'create')->name('lelangg.create')->middleware('auth','level:masyarakat');
+    Route::get('/data-penawaran', 'index')->name('datapenawar.index')->middleware('auth','level:petugas');
+    Route::post('/menawar/{lelang}', 'store')->name('lelangin.store')->middleware('auth','level:masyarakat');
+    Route::delete('/data-penawaran/{lelang}', 'destroy')->name('lelangin.destroy')->middleware('auth','level:petugas');
+});

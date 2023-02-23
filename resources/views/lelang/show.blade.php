@@ -92,11 +92,11 @@
                   </div>
                 </div>
                 @if(auth()->user()->level == 'admin')
-              <a href="" class="btn btn-outline-info">Kembali</a>
+              <a href="/lelang" class="btn btn-outline-info">Kembali</a>
               @elseif(auth()->user()->level == 'masyarakat')
               <a href="{{route('dashboard.masyarakat')}}" class="btn btn-outline-info">Kembali</a>
                 @elseif(auth()->user()->level == 'petugas')
-                <a href="{{ route('lelang.index') }}" class="btn btn-outline-info">Kembali</a>
+                <a href="/petugas/lelang" class="btn btn-outline-info">Kembali</a>
               @endif
               </form>
             </div>

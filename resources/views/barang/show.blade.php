@@ -20,7 +20,7 @@
                 </div>
                 <div class="form-group">
                     <label for="harga_awal">Harga Awal</label>
-                    <input type="text" class="form-control" name="harga_awal" id="harga_awal" placeholder="Input Harga Awal" value="{{ $barangs->harga_awal }}" disabled>
+                    <input type="text" class="form-control" name="harga_awal" id="harga_awal" placeholder="Input Harga Awal" value="@currency($barangs->harga_awal)" disabled>
                 </div>
                         <!-- left column -->
                 <div class="col-md-12">

@@ -41,6 +41,7 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         //
+        //
         $validatedData= $request->validate([
             'nama_barang' => 'required',
             'tgl' => 'required',
@@ -58,7 +59,7 @@ class BarangController extends Controller
             $validatedData['image'] = $request->file('image')->store('barang-images');
         }
         Barang::create($validatedData);
-        return redirect()->route('/barang')->with('success', 'Data Barang Berhasil Ditambahakan');
+        return redirect()->route('barang.index')->with('success', 'Data Barang Berhasil Ditambahakan');
     }
 
     /**

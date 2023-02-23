@@ -1,4 +1,4 @@
-@extends('master')
+@extends('template.home')
 
 @section('title', 'GO-LANG| DATA PENAWARAN')
 

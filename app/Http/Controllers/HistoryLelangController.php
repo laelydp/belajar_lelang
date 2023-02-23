@@ -62,7 +62,7 @@ class HistoryLelangController extends Controller
         $historyLelang->status = 'pending';
         $historyLelang->save();
 
-        return redirect()->route('lelangin.create', $lelang->id)->with('success', 'Anda berhasil menawar barang ini');
+        return redirect()->route('lelangg.create', $lelang->id)->with('success', 'Anda berhasil menawar barang ini');
     }
 
     /**
@@ -108,5 +108,7 @@ class HistoryLelangController extends Controller
     public function destroy(HistoryLelang $historyLelang)
     {
         //
+        $historyLelang->delete();
+        return redirect()->route('datapenawar.index');
     }
 }

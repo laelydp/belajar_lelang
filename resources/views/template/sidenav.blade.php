@@ -63,7 +63,7 @@
             <span class="nav-link-text ms-1">Data Users</span>
             </a>
         </li>
-        <li class="nav-header">GENERATE LAPORAN</li>
+        {{-- <li class="nav-header">GENERATE LAPORAN</li>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
@@ -86,7 +86,7 @@
               </a>
             </li>
           </ul>
-        </li>
+        </li> --}}
         @elseif (auth()->user()->level == 'petugas')
         <li class="nav-item">
             <a class="nav-link" href="{{ route('barang.index') }}">
@@ -105,14 +105,14 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ route('datapenawar.index') }}">
               <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="material-icons opacity-10">folder</i>
+                <i class="material-icons opacity-10">sell</i>
               </div>
               <span class="nav-link-text ms-1">Data Penawaran Lelang</span>
             </a>
           </li>
-          <li class="nav-header">GENERATE LAPORAN</li>
+          {{-- <li class="nav-header">GENERATE LAPORAN</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -134,10 +134,10 @@
                   <p>Laporan History</p>
                 </a>
               </li>
-            </ul>
+            </ul> --}}
             @elseif (auth()->user()->level == 'masyarakat')
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{ route('masyarakatlelang.index') }}" class="nav-link">
               <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="material-icons opacity-10">sell</i>
               </div>
