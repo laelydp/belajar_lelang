@@ -20,7 +20,7 @@
 
               <h5 class="text-muted text-center">@currency($lelang->barang->harga_awal) </h5>
 
-              <a href="{{ route('lelangg.create', $lelang->id) }}" class="btn btn-success btn-block"><b>Tawar</b></a>
+              <a href="{{ route('lelangg.create', $lelang->id) }}" class="btn btn-primary"><b>Tawar</b></a>
             </div>
             <!-- /.card-body -->
          </div>

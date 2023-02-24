@@ -52,8 +52,8 @@
     <div class="card-header">
       <h3 class="card-title">Data Barang</h3>
     </div>
-     <div class="card-body">
-      <table id="data-table" class="table table-bordered table-hover">
+     <div class="card-body table-responsive">
+      <table id="data-table" class="table table-bordered table-hover table-responsive">
         <thead>
             <tr>
             <th>NO</th>

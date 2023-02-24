@@ -46,23 +46,25 @@ class HistoryLelangController extends Controller
     {
         //
         $request->validate([
-            'harga_penawaran'   => 'required|numeric',
+            'harga'   => 'required|numeric',
         ],
         [
-            'harga_penawaran.required'  => "Harga penawaran harus diisi",
-            'harga_penawaran.numeric'  => "Harga penawaran harus berupa angka",
+            'harga.required'  => "Harga penawaran harus diisi",
+            'harga.numeric'  => "Harga penawaran harus berupa angka",
 
         ]);
 
         $historyLelang = new Historylelang();
+
         $historyLelang->lelang_id = $lelang->id;
         $historyLelang->nama_barang = $lelang->barang->nama_barang;
         $historyLelang->users_id = Auth::user()->id;
-        $historyLelang->harga = $request->harga_penawaran;
+        $historyLelang->harga = $request->harga;
         $historyLelang->status = 'pending';
+
         $historyLelang->save();
 
-        return redirect()->route('lelangg.create', $lelang->id)->with('success', 'Anda berhasil menawar barang ini');
+        return redirect()->route('dashboard.masyarakat', $lelang->id)->with('success', 'Anda berhasil menawar barang ini');
     }
 
     /**
