@@ -56,7 +56,7 @@ class BarangController extends Controller
         //     "deskripsi_barang" => $request->deskripsi_barang
         // ]);
         if($request->file('image')) {
-            $validatedData['image'] = $request->file('image')->store('barang-images');
+            $validatedData['image'] = $request->file('image')->store('barang-images', 'public');
         }
         Barang::create($validatedData);
         return redirect()->route('barang.index')->with('success', 'Data Barang Berhasil Ditambahakan');
