@@ -19,14 +19,14 @@
                         <label for="username">Username</label>
                         <input type="text" id="username" name="username" value="{{ $users->username }}" class="form-control" placeholder="Masukkan Username" disabled>
                       </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                             <label for="form-label">Password</label>
                             <input type="text" id="password" name="password" value="{{ $users->password }}"class="form-control" placeholder="Masukkan Password" disabled>
                     </div>
                     <div class="form-group">
                         <label for="form-label">Ketik ulang password</label>
                         <input type="text" id="passwordshow" name="passwordshow"  value="{{ $users->passwordshow }} "class="form-control" placeholder="Ketik Ulang Password" disabled>
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <label for="level" >Level</label>
                         <input type="text" id="level" name="level" value="{{ $users->level }}" class="form-control" disabled>
