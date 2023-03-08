@@ -69,6 +69,7 @@ class LelangController extends Controller
         $lelang->barangs_id = $request->barangs_id;
         $lelang->tanggal_lelang = $request->tanggal_lelang;
         $lelang->harga_akhir = $request->harga_akhir;
+        $lelang->pemenang = 'Belum ada';
         $lelang->users_id = Auth::user()->id;
         $lelang->status = 'dibuka';
         $lelang->save();
@@ -128,3 +129,4 @@ class LelangController extends Controller
 
 
 }
+?>

@@ -32,3 +32,4 @@ class DashboardController extends Controller
         return view('dashboard.masyarakat', compact('lelangs'));
     }
 }
+?>

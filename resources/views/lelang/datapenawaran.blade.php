@@ -5,6 +5,16 @@
 @section('content')
 <section class="content">
   <!-- Default box -->
+  <div class="card">
+    <div class="card-header">
+      <a href="#" target="_blank"class="btn btn-info">
+        <li class="fas fa fa-print"></li>
+        Cetak Data
+      </a>
+      <a href="#" target="_blank"class="btn btn-info">
+        <li class="fas fa fa-print"></li>
+        Download Data
+      </a>
   <div class="card-body p-0">
   <table class="table table-hover">
         <thead>
@@ -40,45 +50,41 @@
               <span class="badge {{ $item->status == 'pending' ? 'bg-warning' : 'bg-success' }}">{{ Str::title($item->status) }}</span>
             </td>
             @if (auth()->user()->level == 'admin')
-            <td>
-              <a class="btn btn-primary btn-sm" href="{{ route('lelangadmin.show', $item->id)}}">
-                <i class="fas fa-folder">
-                </i>
-                View
-              </a>
-            </td>
+
             @endif
             @if (auth()->user()->level == 'petugas')
             <td>
-            <form action="#"method="POST">
-            {{-- <a class="btn btn-primary"href="{{ route('barang.show', $item->id)}}">Detail</a>
-            <a class="btn btn-warning"href="{{ route('barang.edit', $item->id)}}">Edit</a> --}}
-
-            <a class="btn btn-primary btn-sm" href="#">
-              <i class="fas fa-folder">
-              </i>
-              View
-          </a>
-          <a class="btn btn-info btn-sm" href="">
-              <i class="fas fa-pencil-alt">
-              </i>
-              Edit
-          </a>
-            @csrf
-            @method('DELETE')
-            <button class="btn btn-danger btn-sm" type="submit"value="Delete">
-              <i class="fas fa-trash">
-              </i>
-              Delete
-            </button>
-          </form>
-        </td>
+                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#konfirmasiModal">
+                  <i class="fas fa-check"></i> Pilih Jadi Pemenang
+                </button>
+                <div class="modal fade" id="konfirmasiModal" tabindex="-1" aria-labelledby="konfirmasiModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="konfirmasiModalLabel">Konfirmasi Pemenang Lelang</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        Apakah Anda yakin ingin memilih ini sebagai pemenang lelang?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <form action="{{ route('lelangpetugas.setpemenang', $item->id) }}" method="POST">
+                          @csrf
+                          @method('PUT')
+                          <button type="submit" class="btn btn-success">Ya, Pilih</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </td>
         @else
         @endif
         </tr>
         @empty
         <tr>
-            <td>Data masih kosong</td>
+            <td colspan="5" style="text-align: center" class="text-danger"><strong>Data penawaran kosong</strong></td>
         </tr>
         @endforelse
         </tbody>
@@ -88,7 +94,7 @@
   <!-- /.card-footer-->
 </div>
 <!-- /.card -->
-
+  </div>
 </section>
 <!-- /.content -->
 @endsection

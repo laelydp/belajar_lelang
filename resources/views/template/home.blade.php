@@ -34,6 +34,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" href="{{ asset('assets/css/material-dashboard.css') }}" rel="stylesheet" />
+@stack('style')
 </head>
       <!-- SideNav -->
       @include('template.sidenav')
@@ -42,7 +43,7 @@
       @include('template.navbar')
     <!-- End Navbar -->
       @include('template.content')
-
+      @include('sweetalert::alert')
     </div>
   </main>
   <div class="fixed-plugin">

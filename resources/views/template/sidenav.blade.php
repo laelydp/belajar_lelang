@@ -63,30 +63,6 @@
             <span class="nav-link-text ms-1">Data Users</span>
             </a>
         </li>
-        {{-- <li class="nav-header">GENERATE LAPORAN</li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-copy"></i>
-            <p>
-              Laporan
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-file"></i>
-                <p>Laporan Lelang</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-file"></i>
-                <p>Laporan History</p>
-              </a>
-            </li>
-          </ul>
-        </li> --}}
         @elseif (auth()->user()->level == 'petugas')
         <li class="nav-item">
             <a class="nav-link" href="{{ route('barang.index') }}">
@@ -112,29 +88,6 @@
               <span class="nav-link-text ms-1">Data Penawaran Lelang</span>
             </a>
           </li>
-          {{-- <li class="nav-header">GENERATE LAPORAN</li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Laporan
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-file"></i>
-                  <p>Laporan Lelang</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-file"></i>
-                  <p>Laporan History</p>
-                </a>
-              </li>
-            </ul> --}}
             @elseif (auth()->user()->level == 'masyarakat')
             <li class="nav-item">
               <a href="{{ route('masyarakatlelang.index') }}" class="nav-link">

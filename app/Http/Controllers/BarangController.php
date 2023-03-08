@@ -137,3 +137,4 @@ class BarangController extends Controller
         return redirect()->route('barang.index')->with('deletesuccess', 'Data Barang Berhasil Dihapus');
     }
 }
+?>

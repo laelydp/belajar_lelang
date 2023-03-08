@@ -30,10 +30,10 @@
                     <div class="d-flex flex-nowrap flex-column flex-md-row justify-center">
                         <form action="{{ route('user.destroy', [$user->id]) }}" method="POST">
                             @csrf
-                            <a href="{{ route('user.sh" class="btn btn-info btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail">
-                                <i class=" fas fa-eye"></i>
+                            <a href="{{ route('user.show" class="btn btn-info btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail">
+                                <i class="fas fa-eye"></i>
                             </a>
-                            <a href="{{ route('user.edit', $user->id) }}" class="btn btn-warning btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                            <a href="{{ route('user.edit', [ ]) }}" class="btn btn-warning btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
                                 <i class="fas fa-edit"></i>
                             </a>
                                 @method('DELETE')

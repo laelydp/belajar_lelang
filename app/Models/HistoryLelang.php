@@ -20,6 +20,7 @@ class HistoryLelang extends Model
         'harga',
         'tanggal',
         'status'
+        // 'pemenang'
     ];
     public function user()
     {

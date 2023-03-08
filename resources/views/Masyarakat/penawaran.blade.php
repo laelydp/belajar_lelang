@@ -3,6 +3,15 @@
 @section('title', 'GO-LANG | Penawaran')
 
 @section('content')
+@if($lelangs->status == 'ditutup')
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Selamat kepada <strong>{{ $lelangs->pemenang }}</strong></h5>
+    <p class="card-text"> Telah memenangkan lelang untuk barang <strong>{{ $lelangs->barang->nama_barang }}</strong> dengan harga <strong>Rp{{ number_format($lelangs->harga_akhir) }}</strong></p>
+  </div>
+</div>
+@endif
+
 
 <section class="content">
   @if(session()->has('success'))
@@ -40,12 +49,16 @@
   </div>
   @endif
     <div class="container-fluid">
+        @error('harga_penawaran')
+        <b class="form-control is-invalid mb-3">Erorr! {{ $message }}</b>
+        @enderror
         @if(!empty($lelangs))
       <div class="row">
         <div class="col-md-5">
           <!-- Profile Image -->
           <div class="card card-primary card-outline">
             <div class="card-body box-profile">
+                <span class="badge {{ $lelangs->status == 'ditutup' ? 'bg-danger' : 'bg-success' }}">{{ Str::title($lelangs->status) }}</span>
               <div class="text-center">
                @if($lelangs->barang->image)
                 <img class="img-fluid mt-3" src="{{ asset('storage/' . $lelangs->barang->image)}}" alt="User profile picture">
@@ -121,9 +134,12 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            @if($lelangs->status == 'dibuka')
                             <div class="">
                                 <button type="submit" class="btn btn-danger">Tawarkan</button>
                             </div>
+                            @else
+                            @endif
                         </div>
                         <!-- /.modal -->
                         @if(auth()->user()->level == 'admin')
@@ -229,3 +245,30 @@
     </div>
   </section>
 @endsection
+@push('style')
+<style>
+    .card {
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+      padding: 2rem;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+      background-color: #0069d9;
+      border-color: #0062cc;
+    }
+
+    .btn-primary:focus,
+    .btn-primary.focus {
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+    }
+    </style>
+@endpush

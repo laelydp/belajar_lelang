@@ -1,6 +1,6 @@
 @extends('template.home')
 
-@section('title', '')
+@section('title', 'GO-LANG| INDEX')
 @section('content')
 <section class="content">
   <div class="card">
